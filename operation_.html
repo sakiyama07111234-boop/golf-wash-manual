@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>洗車業務 運営マニュアル | 現場スタッフ用</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #0d3b2e;
+  --grass: #2d6a4f;
+  --lime: #a3d9a5;
+  --cream: #fdf8ed;
+  --paper: #f7f0dc;
+  --sun: #f4a261;
+  --red: #d62828;
+  --ink: #1a1a1a;
+  --muted: #666;
+  --line: #d4c9a8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(244, 162, 97, 0.05), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(45, 106, 79, 0.05), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ヘッダー */
+header {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--grass) 100%);
+  color: white;
+  padding: 60px 20px 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--sun);
+}
+
+header::before {
+  content: '⛳';
+  position: absolute;
+  font-size: 180px;
+  opacity: 0.08;
+  right: -30px;
+  top: -10px;
+  transform: rotate(-15deg);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 8vw, 42px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+header h1 .accent {
+  color: var(--sun);
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.car-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* 目次 */
+.toc {
+  background: white;
+  margin: -50px auto 40px;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(13, 59, 46, 0.12);
+  position: relative;
+  z-index: 3;
+  border: 2px solid var(--paper);
+}
+
+.toc h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  color: var(--forest);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--lime);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+}
+
+.toc li {
+  counter-increment: toc;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: 'Noto Serif JP', serif;
+  color: var(--sun);
+  font-weight: 900;
+  font-size: 20px;
+  min-width: 32px;
+}
+
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  flex: 1;
+  padding: 4px 0;
+}
+
+/* セクション */
+section {
+  padding: 40px 0;
+}
+
+.section-head {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.section-number {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--grass);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 900;
+  color: var(--forest);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--sun);
+  margin: 0 auto 16px;
+  border-radius: 2px;
+}
+
+.section-lead {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* カード */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+  border-left: 5px solid var(--lime);
+}
+
+.card.important {
+  border-left-color: var(--red);
+  background: #fff5f5;
+}
+
+.card.tip {
+  border-left-color: var(--sun);
+  background: #fffaf0;
+}
+
+.card h3 {
+  font-size: 17px;
+  color: var(--forest);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+/* スケジュール */
+.schedule {
+  background: white;
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+  margin-bottom: 20px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.schedule-item:last-child { border-bottom: none; }
+
+.time-badge {
+  background: var(--forest);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 900;
+  font-size: 18px;
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 80px;
+  line-height: 1.2;
+}
+
+.time-badge .label {
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.9;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.schedule-text {
+  flex: 1;
+}
+
+.schedule-text h4 {
+  color: var(--forest);
+  font-size: 16px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.schedule-text p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* フロー（流れ） */
+.flow-section {
+  margin-bottom: 40px;
+}
+
+.flow-title {
+  background: var(--forest);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 16px 16px 0 0;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flow-title.post {
+  background: var(--grass);
+}
+
+.flow-steps {
+  background: white;
+  border-radius: 0 0 16px 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+}
+
+.flow-step {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--line);
+  align-items: flex-start;
+}
+
+.flow-step:last-child { border-bottom: none; }
+
+.flow-num {
+  background: linear-gradient(135deg, var(--forest), var(--grass));
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 900;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(13, 59, 46, 0.3);
+}
+
+.flow-body {
+  flex: 1;
+}
+
+.flow-body h4 {
+  color: var(--forest);
+  font-size: 16px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.flow-body p {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.flow-body .highlight {
+  background: linear-gradient(transparent 60%, var(--lime) 60%);
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.flow-body .note {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--paper);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* 料金表 */
+.price-intro {
+  background: var(--paper);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.price-intro strong {
+  color: var(--forest);
+  font-weight: 700;
+}
+
+.price-pattern {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+}
+
+.price-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--paper);
+}
+
+.price-header.keeper { background: linear-gradient(90deg, #eff7e8, white); border-bottom-color: #c5d9a8; }
+.price-header.pattern-a { background: linear-gradient(90deg, #e6f3ec, white); border-bottom-color: var(--lime); }
+.price-header.pattern-b { background: linear-gradient(90deg, #fff4e0, white); border-bottom-color: var(--sun); }
+.price-header.pattern-c { background: linear-gradient(90deg, #fde6e6, white); border-bottom-color: #f5a3a3; }
+
+.price-label {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.price-badge.base { background: #eaeaea; color: #555; }
+.price-badge.plus-a { background: var(--lime); color: var(--forest); }
+.price-badge.plus-b { background: var(--sun); color: white; }
+.price-badge.plus-c { background: var(--red); color: white; }
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--paper);
+}
+
+.price-cell {
+  background: white;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.price-cell .cat {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.price-cell .yen {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.price-cell .yen .unit {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 2px;
+  font-weight: 500;
+}
+
+/* 割引バナー */
+.discount-banner {
+  background: linear-gradient(135deg, var(--sun), #e76f51);
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 20px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.discount-banner::before {
+  content: '🎁';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.15;
+  right: -10px;
+  top: -10px;
+}
+
+.discount-banner h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.discount-banner p {
+  font-size: 14px;
+  opacity: 0.95;
+  position: relative;
+}
+
+/* 鍵管理 */
+.key-flow {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+  margin-bottom: 16px;
+}
+
+.key-flow h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  color: var(--forest);
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--sun);
+}
+
+.key-step {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  align-items: center;
+}
+
+.key-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--paper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.key-body {
+  flex: 1;
+}
+
+.key-body strong {
+  color: var(--forest);
+  font-size: 15px;
+}
+
+.key-body p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.key-arrow {
+  text-align: center;
+  color: var(--sun);
+  font-size: 22px;
+  padding: 4px 0;
+}
+
+/* 人数配置 */
+.staff-count {
+  background: linear-gradient(135deg, var(--forest), var(--grass));
+  color: white;
+  padding: 28px 24px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.staff-count::before {
+  content: '👥';
+  position: absolute;
+  font-size: 100px;
+  opacity: 0.12;
+  right: -10px;
+  bottom: -20px;
+}
+
+.staff-count .num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--sun);
+  line-height: 1;
+  margin: 10px 0;
+  position: relative;
+}
+
+.staff-count .num .unit {
+  font-size: 20px;
+  color: white;
+  margin-left: 6px;
+}
+
+.staff-count .label {
+  font-size: 13px;
+  opacity: 0.9;
+  letter-spacing: 0.15em;
+  position: relative;
+}
+
+.staff-count .memo {
+  font-size: 12px;
+  margin-top: 8px;
+  opacity: 0.8;
+  position: relative;
+}
+
+/* FAQ */
+.faq {
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(13, 59, 46, 0.06);
+}
+
+.faq summary {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  font-size: 15px;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::before {
+  content: '❓';
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.faq summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 24px;
+  color: var(--sun);
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+
+.faq[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  padding: 0 20px 20px 50px;
+  border-top: 1px dashed var(--line);
+  padding-top: 16px;
+  margin-top: 0;
+}
+
+.faq-content p {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 10px;
+}
+
+/* フッター */
+footer {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 2;
+}
+
+footer .brand {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+  color: var(--sun);
+}
+
+footer .version {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+  opacity: 0.6;
+  letter-spacing: 0.2em;
+}
+
+/* トップに戻る */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--forest);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(13, 59, 46, 0.3);
+  z-index: 100;
+  font-size: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 文字大きく */
+.text-size-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: var(--forest);
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(13, 59, 46, 0.2);
+  cursor: pointer;
+  border: 2px solid var(--forest);
+  z-index: 100;
+  user-select: none;
+}
+
+body.large-text { font-size: 20px; }
+body.large-text .flow-body h4 { font-size: 19px; }
+body.large-text .card p { font-size: 17px; }
+body.large-text .section-title { font-size: 28px; }
+body.large-text .price-cell .yen { font-size: 19px; }
+
+/* フェードイン */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 40px; }
+  header { padding: 80px 40px 100px; }
+}
+</style>
+</head>
+<body>
+
+<div class="text-size-toggle" onclick="document.body.classList.toggle('large-text')">
+  🔍 文字大きく
+</div>
+
+<!-- ===== ヘッダー ===== -->
+<header>
+  <div class="container">
+    <div class="car-icon">🏌️🚗</div>
+    <div class="eyebrow">GOLF COURSE CAR WASH OPERATION</div>
+    <h1>洗車業務<br><span class="accent">運営マニュアル</span></h1>
+    <p class="subtitle">
+      ゴルフ場での洗車サービス運営の<br>
+      基本ルール・業務フロー・料金体系を<br>
+      現場スタッフ向けにまとめた資料です。
+    </p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ===== 目次 ===== -->
+  <nav class="toc">
+    <h2>📖 目次</h2>
+    <ol>
+      <li><a href="#schedule">出勤時間・体制</a></li>
+      <li><a href="#flow-pre">プレー前の流れ</a></li>
+      <li><a href="#flow-post">プレー後の流れ</a></li>
+      <li><a href="#price">料金表（週次変動）</a></li>
+      <li><a href="#key">鍵の管理方法</a></li>
+      <li><a href="#rules">重要な運用ルール</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===== 1. 出勤時間 ===== -->
+  <section id="schedule">
+    <div class="section-head">
+      <div class="section-number">SECTION 01</div>
+      <h2 class="section-title">出勤時間・<br>現場体制</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">時間厳守で準備を整える</p>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule-item">
+        <div class="time-badge">
+          <span class="label">到着</span>
+          5:30
+        </div>
+        <div class="schedule-text">
+          <h4>ゴルフ場到着</h4>
+          <p>余裕を持って到着し、機材の準備と現場確認を行います。</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="time-badge">
+          <span class="label">開始</span>
+          6:00
+        </div>
+        <div class="schedule-text">
+          <h4>受付開始</h4>
+          <p>お客様の受付を開始します。エントランスで案内できる状態に。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="staff-count">
+      <div class="label">現場スタッフ</div>
+      <div class="num">2<span class="unit">名以上</span></div>
+      <div class="memo">※経験者で編成（必須）</div>
+    </div>
+
+    <div class="card important">
+      <h3>🔴 必ず守ること</h3>
+      <p>
+        ・<strong>到着時間は必ず5:30</strong>（遅刻厳禁）<br>
+        ・<strong>最低2名体制</strong>で運営<br>
+        ・<strong>経験者が必ず1名以上</strong>入る
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 2. プレー前の流れ ===== -->
+  <section id="flow-pre">
+    <div class="section-head">
+      <div class="section-number">SECTION 02</div>
+      <h2 class="section-title">プレー前<br>受付の流れ</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">お客様到着から受付完了まで</p>
+    </div>
+
+    <div class="flow-section">
+      <div class="flow-title">⛳ プレー前</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <h4>エントランスにて案内</h4>
+            <p><span class="highlight">お客様がゴルフ場に到着したら、エントランスで声をかけて案内</span>します。丁寧な挨拶を心がけましょう。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <h4>駐車場まで着いていく</h4>
+            <p>お客様の車に<span class="highlight">付き添って駐車場まで同行</span>します。スムーズに誘導してください。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <h4>駐車場にて受付</h4>
+            <p>駐車後、以下の2つを実施：</p>
+            <p>・<span class="highlight">同意書へのサイン</span>をいただく<br>・<span class="highlight">荷札を渡す</span>（鍵管理用）</p>
+            <span class="note">💡 アンケートに同意の方にはキャンペーン適用</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-body">
+            <h4>会計</h4>
+            <p>料金のお支払いを頂きます。</p>
+            <p>支払方法：<span class="highlight">現金 / カード / 電子マネー</span></p>
+            <span class="note">💡 アンケート同意の場合は1,000円OFF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. プレー後の流れ ===== -->
+  <section id="flow-post">
+    <div class="section-head">
+      <div class="section-number">SECTION 03</div>
+      <h2 class="section-title">プレー後<br>引き渡しの流れ</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">プレー終了から完了まで</p>
+    </div>
+
+    <div class="flow-section">
+      <div class="flow-title post">🏁 プレー後</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <h4>プレー終了後に電話してもらう</h4>
+            <p>お客様から<span class="highlight">プレー終了の電話連絡</span>を受けます。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <h4>車をエントランスに移動</h4>
+            <p>お預かりした車を<span class="highlight">エントランスまで移動</span>させます。安全運転で！</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <h4>お客様と一緒に確認</h4>
+            <p>お客様と車の状態を確認。</p>
+            <p>・<span class="highlight">確認書にサイン</span>をいただく<br>・<span class="highlight">荷札を回収</span>して鍵を返却</p>
+            <span class="note">💡 アンケート記入をお願いする</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-body">
+            <h4>完了</h4>
+            <p>お客様をお見送りして、<span class="highlight">1件の業務完了</span>です。お疲れ様でした！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 料金表 ===== -->
+  <section id="price">
+    <div class="section-head">
+      <div class="section-number">SECTION 04</div>
+      <h2 class="section-title">料金表<br>（週次変動）</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">パターンは週ごとに切り替え</p>
+    </div>
+
+    <div class="price-intro">
+      <strong>💡 料金パターンについて</strong><br>
+      料金は<strong>1週間単位で変動</strong>します。<br>
+      順番は <strong>「A → B → C」</strong> の3パターンを繰り返します。<br>
+      ※キーパーラボの料金は基準価格として掲載
+    </div>
+
+    <!-- キーパーラボ（基準） -->
+    <div class="price-pattern">
+      <div class="price-header keeper">
+        <div class="price-label">📐 基準</div>
+        <div class="price-badge base">キーパーラボ</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-cell">
+          <div class="cat">SS</div>
+          <div class="yen">¥4,100</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">S</div>
+          <div class="yen">¥4,630</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">M</div>
+          <div class="yen">¥5,270</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">L</div>
+          <div class="yen">¥5,900</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">LL</div>
+          <div class="yen">¥6,320</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">XL</div>
+          <div class="yen">¥7,900</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- パターンA -->
+    <div class="price-pattern">
+      <div class="price-header pattern-a">
+        <div class="price-label">🅰️ パターンA</div>
+        <div class="price-badge plus-a">+¥1,000</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-cell">
+          <div class="cat">SS</div>
+          <div class="yen">¥5,100</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">S</div>
+          <div class="yen">¥5,630</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">M</div>
+          <div class="yen">¥6,270</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">L</div>
+          <div class="yen">¥6,900</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">LL</div>
+          <div class="yen">¥7,320</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">XL</div>
+          <div class="yen">¥8,900</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- パターンB -->
+    <div class="price-pattern">
+      <div class="price-header pattern-b">
+        <div class="price-label">🅱️ パターンB</div>
+        <div class="price-badge plus-b">+¥1,500</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-cell">
+          <div class="cat">SS</div>
+          <div class="yen">¥5,600</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">S</div>
+          <div class="yen">¥6,130</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">M</div>
+          <div class="yen">¥6,770</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">L</div>
+          <div class="yen">¥7,400</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">LL</div>
+          <div class="yen">¥7,820</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">XL</div>
+          <div class="yen">¥9,400</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- パターンC -->
+    <div class="price-pattern">
+      <div class="price-header pattern-c">
+        <div class="price-label">🆑 パターンC</div>
+        <div class="price-badge plus-c">+¥2,000</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-cell">
+          <div class="cat">SS</div>
+          <div class="yen">¥6,100</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">S</div>
+          <div class="yen">¥6,630</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">M</div>
+          <div class="yen">¥7,270</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">L</div>
+          <div class="yen">¥7,900</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">LL</div>
+          <div class="yen">¥8,320</div>
+        </div>
+        <div class="price-cell">
+          <div class="cat">XL</div>
+          <div class="yen">¥9,900</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- アンケート割引 -->
+    <div class="discount-banner">
+      <h4>🎁 アンケート回答で¥1,000 OFF</h4>
+      <p>アンケートにご協力いただいたお客様には、<br>料金から1,000円割引いたします。</p>
+    </div>
+
+    <div class="card tip">
+      <h3>💡 料金カテゴリの目安</h3>
+      <p>
+        <strong>SS</strong>：軽自動車（小型）<br>
+        <strong>S</strong>：軽自動車（標準）・コンパクトカー<br>
+        <strong>M</strong>：セダン・小型SUV<br>
+        <strong>L</strong>：ミニバン・標準SUV<br>
+        <strong>LL</strong>：大型ミニバン・大型SUV<br>
+        <strong>XL</strong>：特大車両・高級車
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 5. 鍵の管理 ===== -->
+  <section id="key">
+    <div class="section-head">
+      <div class="section-number">SECTION 05</div>
+      <h2 class="section-title">鍵の<br>管理方法</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">荷札を使った確実な運用</p>
+    </div>
+
+    <div class="key-flow">
+      <h3>🔑 正しい鍵の管理手順</h3>
+      <div class="key-step">
+        <div class="key-icon">🏷️</div>
+        <div class="key-body">
+          <strong>① 荷札を渡す</strong>
+          <p>お客様に番号入りの荷札を渡します。</p>
+        </div>
+      </div>
+      <div class="key-arrow">↓</div>
+      <div class="key-step">
+        <div class="key-icon">📝</div>
+        <div class="key-body">
+          <strong>② 確認書に荷札番号を記載</strong>
+          <p>渡した荷札の番号を確認書に必ず記録します。</p>
+        </div>
+      </div>
+      <div class="key-arrow">↓</div>
+      <div class="key-step">
+        <div class="key-icon">🔑</div>
+        <div class="key-body">
+          <strong>③ 荷札と引き換えで鍵を返却</strong>
+          <p>プレー後、荷札をお預かりして鍵を返却。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card important">
+      <h3>⚠️ 荷札を紛失した場合</h3>
+      <p>
+        お客様が荷札を紛失した場合は、<br>
+        <strong>① お名前</strong><br>
+        <strong>② 電話番号</strong><br>
+        を確認書と照合してから鍵を返却してください。
+      </p>
+      <p style="margin-top: 12px; color: var(--red); font-weight: 700;">
+        絶対に本人確認なしで鍵を渡さないこと！
+      </p>
+    </div>
+
+    <div class="card tip">
+      <h3>💡 よくあるミス</h3>
+      <p>
+        ・確認書への荷札番号の記載忘れ<br>
+        ・荷札の紛失（スタッフ側）<br>
+        ・確認なしでの鍵返却<br><br>
+        これらは<strong>トラブルの元</strong>です。必ずルールを守りましょう。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 6. 重要ルール ===== -->
+  <section id="rules">
+    <div class="section-head">
+      <div class="section-number">SECTION 06</div>
+      <h2 class="section-title">重要な<br>運用ルール</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">トラブルゼロで運営するために</p>
+    </div>
+
+    <div class="card important">
+      <h3>🔴 必ず守ること</h3>
+      <p>
+        ・<strong>到着時間は5:30厳守</strong><br>
+        ・<strong>受付開始は6:00</strong><br>
+        ・<strong>最低2名体制</strong>（経験者必須）<br>
+        ・<strong>同意書・確認書へのサインを必ずもらう</strong><br>
+        ・<strong>荷札と確認書をセットで管理</strong><br>
+        ・<strong>お客様からの電話には迅速に対応</strong>
+      </p>
+    </div>
+
+    <div class="card tip">
+      <h3>🟡 意識すること</h3>
+      <p>
+        ・丁寧な挨拶と接客<br>
+        ・安全運転での車移動<br>
+        ・アンケート協力のお願い<br>
+        ・料金変動週を必ず確認（A・B・C）<br>
+        ・お客様と一緒に車の状態確認
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🟢 心がけること</h3>
+      <p>
+        ・お客様目線でのサービス<br>
+        ・スタッフ間の連携<br>
+        ・気づいたことは記録に残す<br>
+        ・継続的な改善意識
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 7. FAQ ===== -->
+  <section id="faq">
+    <div class="section-head">
+      <div class="section-number">SECTION 07</div>
+      <h2 class="section-title">よくある<br>質問</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">現場で困った時の対処法</p>
+    </div>
+
+    <details class="faq">
+      <summary>お客様が荷札を紛失した</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：お名前と電話番号を聞き、確認書と照合してから鍵を返却します。</p>
+        <p>確認書に記載の情報と一致しない場合は、経験者スタッフに相談してください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>料金パターンがわからない</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：その週の料金パターン（A・B・C）を出勤時に必ず確認してください。</p>
+        <p>わからない場合は担当者に連絡して確認。料金を間違えると後でトラブルになります。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>アンケートを断られた</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：無理強いしないでください。</p>
+        <p>アンケート未記入の場合は、<strong>通常料金（割引なし）</strong>で会計します。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>車に傷を見つけた</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：受付時にお客様と一緒に確認し、<strong>確認書に明記</strong>します。</p>
+        <p>発見時は写真を撮って記録を残すと安心です。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>2名で回らない（お客様が多い）</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：担当者に連絡して応援を要請してください。</p>
+        <p>お客様をお待たせする場合は、必ず状況を説明してお詫びを。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>お客様からクレームが来た</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：まずは誠実に謝罪し、お話をしっかり聞きます。</p>
+        <p>現場で判断できない内容は、<strong>必ず担当者にエスカレーション</strong>してください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>天候が悪くて洗車できない</summary>
+      <div class="faq-content">
+        <p><strong>対応</strong>：担当者に連絡して判断を仰ぎます。</p>
+        <p>中止の場合はお客様への連絡と返金対応が必要です。個人判断は避けてください。</p>
+      </div>
+    </details>
+  </section>
+
+</div>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="container">
+    <div class="brand">カーウォッシュマスターズ</div>
+    <p>
+      ゴルフ場洗車サービス<br>
+      現場スタッフ運営マニュアル
+    </p>
+    <div class="version">
+      Ver 1.0 / 2026.04 発行
+    </div>
+  </div>
+</footer>
+
+<!-- ===== トップに戻る ===== -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
+<script>
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.flow-step, .card, .schedule, .price-pattern, .key-flow, .faq, .staff-count, .discount-banner').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
