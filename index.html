@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>洗車受付システム マニュアル | ゴルフ場スタッフ用</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #0d3b2e;
+  --grass: #2d6a4f;
+  --lime: #a3d9a5;
+  --cream: #fdf8ed;
+  --paper: #f7f0dc;
+  --sun: #f4a261;
+  --red: #d62828;
+  --ink: #1a1a1a;
+  --muted: #666;
+  --line: #d4c9a8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* 紙のような質感 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(244, 162, 97, 0.05), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(45, 106, 79, 0.05), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================= */
+/* ヘッダー */
+/* ============================================= */
+header {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--grass) 100%);
+  color: white;
+  padding: 60px 20px 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--sun);
+}
+
+header::before {
+  content: '🌲';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.08;
+  right: -40px;
+  top: -20px;
+  transform: rotate(15deg);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 8vw, 42px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+header h1 .accent {
+  color: var(--sun);
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.car-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ============================================= */
+/* 目次 */
+/* ============================================= */
+.toc {
+  background: white;
+  margin: -50px auto 40px;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(13, 59, 46, 0.12);
+  position: relative;
+  z-index: 3;
+  border: 2px solid var(--paper);
+}
+
+.toc h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  color: var(--forest);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--lime);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+}
+
+.toc li {
+  counter-increment: toc;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: 'Noto Serif JP', serif;
+  color: var(--sun);
+  font-weight: 900;
+  font-size: 20px;
+  min-width: 32px;
+}
+
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  flex: 1;
+  padding: 4px 0;
+}
+
+.toc a:active { color: var(--grass); }
+
+/* ============================================= */
+/* セクション */
+/* ============================================= */
+section {
+  padding: 40px 0;
+}
+
+.section-head {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.section-number {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--grass);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 900;
+  color: var(--forest);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--sun);
+  margin: 0 auto 16px;
+  border-radius: 2px;
+}
+
+.section-lead {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ============================================= */
+/* カード共通 */
+/* ============================================= */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(13, 59, 46, 0.08);
+  border-left: 5px solid var(--lime);
+}
+
+.card.important {
+  border-left-color: var(--red);
+  background: #fff5f5;
+}
+
+.card.tip {
+  border-left-color: var(--sun);
+  background: #fffaf0;
+}
+
+.card h3 {
+  font-size: 17px;
+  color: var(--forest);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+/* ============================================= */
+/* ステップ */
+/* ============================================= */
+.step {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 24px rgba(13, 59, 46, 0.08);
+  position: relative;
+  border: 2px solid var(--paper);
+}
+
+.step-badge {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background: var(--forest);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.step-badge .num {
+  color: var(--sun);
+  font-size: 16px;
+}
+
+.step h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  color: var(--forest);
+  margin: 8px 0 16px;
+  line-height: 1.4;
+}
+
+.step p {
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.step strong {
+  background: linear-gradient(transparent 60%, var(--lime) 60%);
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+/* 画面イメージ */
+.screen-mock {
+  background: #f0f0f0;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  padding: 18px 16px;
+  margin: 16px 0;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.screen-mock::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #888;
+  border-radius: 2px;
+}
+
+.screen-mock .screen-title {
+  text-align: center;
+  padding-top: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+  color: var(--forest);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+}
+
+.field {
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 13px;
+}
+
+.field .label {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.field .value {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.field.highlight {
+  background: #fff9e6;
+  border-color: var(--sun);
+}
+
+.submit-btn-mock {
+  background: var(--grass);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  border-radius: 24px;
+  font-weight: 700;
+  margin-top: 12px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+}
+
+/* 矢印 */
+.arrow-down {
+  text-align: center;
+  font-size: 28px;
+  color: var(--sun);
+  margin: 16px 0;
+  animation: arrowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* タグ */
+.tag {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--forest);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 2px 4px 2px 0;
+}
+
+.tag.required {
+  background: var(--red);
+  color: white;
+}
+
+.tag.optional {
+  background: var(--line);
+  color: var(--muted);
+}
+
+/* ============================================= */
+/* 運用ルール */
+/* ============================================= */
+.rule-list {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(13, 59, 46, 0.08);
+}
+
+.rule {
+  padding: 14px 0;
+  display: flex;
+  gap: 14px;
+  border-bottom: 1px dotted var(--line);
+}
+
+.rule:last-child { border-bottom: none; }
+
+.rule-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--paper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rule-body h4 {
+  color: var(--forest);
+  font-size: 15px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.rule-body p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ============================================= */
+/* トラブル対処 */
+/* ============================================= */
+.faq {
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(13, 59, 46, 0.06);
+}
+
+.faq summary {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  font-size: 15px;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::before {
+  content: '❓';
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.faq summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 24px;
+  color: var(--sun);
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+
+.faq[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  padding: 0 20px 20px 50px;
+  border-top: 1px dashed var(--line);
+  padding-top: 16px;
+  margin-top: 0;
+}
+
+.faq-content p {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 10px;
+}
+
+.faq-content p:last-child { margin-bottom: 0; }
+
+/* ============================================= */
+/* ボタン */
+/* ============================================= */
+.cta-box {
+  background: linear-gradient(135deg, var(--forest), var(--grass));
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  color: white;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '🏌️';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.1;
+  right: -20px;
+  bottom: -20px;
+}
+
+.cta-box h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.cta-box p {
+  opacity: 0.95;
+  margin-bottom: 20px;
+  font-size: 14px;
+  position: relative;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--sun);
+  color: var(--forest);
+  padding: 16px 40px;
+  border-radius: 100px;
+  font-weight: 900;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(244, 162, 97, 0.4);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.cta-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================= */
+/* フッター */
+/* ============================================= */
+footer {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 2;
+}
+
+footer .brand {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+  color: var(--sun);
+}
+
+footer .version {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+  opacity: 0.6;
+  letter-spacing: 0.2em;
+}
+
+/* ============================================= */
+/* トップに戻るボタン */
+/* ============================================= */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--forest);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(13, 59, 46, 0.3);
+  z-index: 100;
+  font-size: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================= */
+/* 大きな文字モード（アクセシビリティ） */
+/* ============================================= */
+.text-size-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: var(--forest);
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(13, 59, 46, 0.2);
+  cursor: pointer;
+  border: 2px solid var(--forest);
+  z-index: 100;
+  user-select: none;
+}
+
+body.large-text { font-size: 20px; }
+body.large-text .step h3 { font-size: 24px; }
+body.large-text .card p { font-size: 17px; }
+body.large-text .section-title { font-size: 28px; }
+
+/* ============================================= */
+/* アニメーション */
+/* ============================================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================= */
+/* レスポンシブ */
+/* ============================================= */
+@media (min-width: 768px) {
+  .container { padding: 0 40px; }
+  header { padding: 80px 40px 100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== トグルボタン ===== -->
+<div class="text-size-toggle" onclick="document.body.classList.toggle('large-text')">
+  🔍 文字大きく
+</div>
+
+<!-- ===== ヘッダー ===== -->
+<header>
+  <div class="container">
+    <div class="car-icon">🚗💨</div>
+    <div class="eyebrow">GOLF COURSE CAR WASH</div>
+    <h1>洗車受付システム<br><span class="accent">スタッフマニュアル</span></h1>
+    <p class="subtitle">
+      このマニュアルでは、洗車受付の流れを<br>
+      写真付きで詳しく説明します。<br>
+      わからないことがあれば、いつでも確認してください。
+    </p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ===== 目次 ===== -->
+  <nav class="toc">
+    <h2>📖 目次</h2>
+    <ol>
+      <li><a href="#overview">このシステムでできること</a></li>
+      <li><a href="#preparation">最初にやること（初回のみ）</a></li>
+      <li><a href="#howto">受付の基本の流れ</a></li>
+      <li><a href="#fields">入力項目の説明</a></li>
+      <li><a href="#rules">大事な運用ルール</a></li>
+      <li><a href="#troubleshoot">困った時の対処法</a></li>
+      <li><a href="#contact">それでも解決しない時</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===== 1. 概要 ===== -->
+  <section id="overview">
+    <div class="section-head">
+      <div class="section-number">SECTION 01</div>
+      <h2 class="section-title">このシステムで<br>できること</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">スマホで受付→自動で記録・通知</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 何のためのシステム？</h3>
+      <p>洗車のご依頼を受けた時に、スマホのフォームに入力するだけで、自動で売上と件数が記録されます。さらに全スタッフにChatworkで通知されるので、情報共有がスムーズになります。</p>
+    </div>
+
+    <div class="card tip">
+      <h3>✨ いいところ</h3>
+      <p>
+        ・手書きの記録用紙は不要<br>
+        ・自動で集計されるので計算ミスなし<br>
+        ・全スタッフがリアルタイムで状況を把握<br>
+        ・お客様をお待たせしない
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 2. 準備 ===== -->
+  <section id="preparation">
+    <div class="section-head">
+      <div class="section-number">SECTION 02</div>
+      <h2 class="section-title">最初にやること<br>（初回のみ）</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">スマホにブックマーク登録しましょう</p>
+    </div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">1</span></div>
+      <h3>受付フォームのURLを開く</h3>
+      <p>管理者から送られてきた受付フォームのURLを、<strong>スマホのブラウザで開きます</strong>。</p>
+      <p style="color: var(--muted); font-size: 13px;">※URLがわからない場合は、担当者に聞いてください</p>
+    </div>
+
+    <div class="arrow-down">⬇</div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">2</span></div>
+      <h3>ホーム画面に追加する</h3>
+      <p><strong>iPhoneの場合</strong>：画面下の「共有ボタン（□に↑）」→「ホーム画面に追加」をタップ</p>
+      <p><strong>Androidの場合</strong>：画面右上の「︙」メニュー→「ホーム画面に追加」をタップ</p>
+      <div class="card tip" style="margin-top: 16px;">
+        <h3>💡 なぜホーム画面に追加するの？</h3>
+        <p>アプリのようにワンタップで開けるようになります。毎回URLを探す必要がなくなるので、とても便利です。</p>
+      </div>
+    </div>
+
+    <div class="arrow-down">⬇</div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">3</span></div>
+      <h3>準備完了！</h3>
+      <p>ホーム画面に🚗アイコンが追加されたらOK。<strong>次回からはこのアイコンをタップするだけ</strong>で受付画面が開きます。</p>
+    </div>
+  </section>
+
+  <!-- ===== 3. 使い方 ===== -->
+  <section id="howto">
+    <div class="section-head">
+      <div class="section-number">SECTION 03</div>
+      <h2 class="section-title">受付の<br>基本の流れ</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">お客様が来たら、この手順で入力</p>
+    </div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">1</span></div>
+      <h3>ホーム画面のアイコンをタップ</h3>
+      <p>スマホのホーム画面にある🚗アイコンをタップして、受付フォームを開きます。</p>
+    </div>
+
+    <div class="arrow-down">⬇</div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">2</span></div>
+      <h3>各項目をお客様に確認しながら入力</h3>
+      <p>上から順番に入力していきます。<strong>赤い「＊」マークがついている項目は必須</strong>です。</p>
+
+      <div class="screen-mock">
+        <div class="screen-title">🏌️ ゴルフ場洗車受付フォーム</div>
+        <div class="field">
+          <span class="label">受付日 *</span>
+          <span class="value">📅 2026/04/23</span>
+        </div>
+        <div class="field">
+          <span class="label">担当スタッフ *</span>
+          <span class="value">▼ 田中</span>
+        </div>
+        <div class="field highlight">
+          <span class="label">お客さま名 *</span>
+          <span class="value">山田</span>
+        </div>
+        <div class="field">
+          <span class="label">車種 *</span>
+          <span class="value">プリウス</span>
+        </div>
+        <div class="field">
+          <span class="label">洗車メニュー *</span>
+          <span class="value">▼ L</span>
+        </div>
+        <div class="field">
+          <span class="label">料金 *</span>
+          <span class="value">5000</span>
+        </div>
+        <div class="submit-btn-mock">送信</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">⬇</div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">3</span></div>
+      <h3>「送信」ボタンをタップ</h3>
+      <p>全ての必須項目を入力したら、画面下の<strong>「送信」ボタン</strong>をタップします。</p>
+      <div class="card important" style="margin-top: 16px;">
+        <h3>⚠️ 送信ボタンが押せない時は</h3>
+        <p>必須項目（赤い「＊」）のどれかが入力されていません。<strong>画面を上にスクロールして</strong>、抜けている項目を探しましょう。</p>
+      </div>
+    </div>
+
+    <div class="arrow-down">⬇</div>
+
+    <div class="step">
+      <div class="step-badge">STEP <span class="num">4</span></div>
+      <h3>送信完了！</h3>
+      <p>「回答を記録しました」と表示されたら、受付完了です。自動的にChatworkに通知が飛んでいます。</p>
+      <div class="card tip" style="margin-top: 16px;">
+        <h3>✨ 次のお客様の受付は</h3>
+        <p>「別の回答を送信」をタップすると、新しい入力画面が開きます。ホーム画面に戻る必要はありません。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 入力項目の説明 ===== -->
+  <section id="fields">
+    <div class="section-head">
+      <div class="section-number">SECTION 04</div>
+      <h2 class="section-title">入力項目の<br>くわしい説明</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">何を書けばいいかわかる早見表</p>
+    </div>
+
+    <div class="rule-list">
+      <div class="rule">
+        <div class="rule-icon">📅</div>
+        <div class="rule-body">
+          <h4>受付日 <span class="tag required">必須</span></h4>
+          <p>今日の日付を選びます。カレンダーから選択できます。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">👤</div>
+        <div class="rule-body">
+          <h4>担当スタッフ <span class="tag required">必須</span></h4>
+          <p>自分の名前を選びます。プルダウンから選択。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">🙋</div>
+        <div class="rule-body">
+          <h4>お客さま名 <span class="tag required">必須</span></h4>
+          <p>お客様の苗字を入力。「様」は不要（自動でつきます）。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">🚗</div>
+        <div class="rule-body">
+          <h4>車種 <span class="tag required">必須</span></h4>
+          <p>車の種類を入力。例：「プリウス」「ベンツC200」</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">⏰</div>
+        <div class="rule-body">
+          <h4>作業開始時刻 <span class="tag required">必須</span></h4>
+          <p>今の時刻を入力。受付した時の時刻でOK。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">🧼</div>
+        <div class="rule-body">
+          <h4>洗車メニュー <span class="tag required">必須</span></h4>
+          <p>サイズを選択（S・M・L・LLなど）。お客様の車の大きさで判断。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">✨</div>
+        <div class="rule-body">
+          <h4>オプション <span class="tag optional">任意</span></h4>
+          <p>追加サービスがあれば複数選択可。なければチェック不要。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">💰</div>
+        <div class="rule-body">
+          <h4>料金 <span class="tag required">必須</span></h4>
+          <p>金額を半角数字で入力。例：5000（「円」は不要）</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">💳</div>
+        <div class="rule-body">
+          <h4>支払い方法 <span class="tag required">必須</span></h4>
+          <p>現金・カード・電子マネーから選択。</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">📝</div>
+        <div class="rule-body">
+          <h4>備考 <span class="tag optional">任意</span></h4>
+          <p>特記事項があれば記入。例：「次回予約希望」「車内汚れあり」</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. 運用ルール ===== -->
+  <section id="rules">
+    <div class="section-head">
+      <div class="section-number">SECTION 05</div>
+      <h2 class="section-title">大事な<br>運用ルール</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">みんなで守ってスムーズな運用を</p>
+    </div>
+
+    <div class="card important">
+      <h3>🔴 必ず守ること</h3>
+      <p>
+        ・<strong>お客様の受付ごとに毎回入力</strong>する<br>
+        ・<strong>料金は実際に頂いた金額</strong>を入力<br>
+        ・<strong>送信ボタンを押すまでが完了</strong>
+      </p>
+    </div>
+
+    <div class="card tip">
+      <h3>🟡 なるべく守ること</h3>
+      <p>
+        ・受付したらすぐに入力する（後回しにしない）<br>
+        ・入力ミスに気づいたら、すぐに担当者へ報告<br>
+        ・わからないことは自己判断せず確認
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🟢 やってもOKなこと</h3>
+      <p>
+        ・備考欄は自由に使っていい<br>
+        ・複数のオプションを選んでいい<br>
+        ・過去の受付はスプレッドシートで確認できる
+      </p>
+    </div>
+
+    <div class="card important" style="margin-top: 20px;">
+      <h3>❌ やってはいけないこと</h3>
+      <p>
+        ・<strong>テスト送信</strong>（本物のデータに混ざります）<br>
+        ・<strong>架空のお客様で送信</strong><br>
+        ・<strong>入力内容を他人に教える</strong>（個人情報）
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 6. トラブル対処 ===== -->
+  <section id="troubleshoot">
+    <div class="section-head">
+      <div class="section-number">SECTION 06</div>
+      <h2 class="section-title">困った時の<br>対処法</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">よくある質問と解決方法</p>
+    </div>
+
+    <details class="faq">
+      <summary>送信ボタンが押せない・グレーになっている</summary>
+      <div class="faq-content">
+        <p><strong>原因</strong>：必須項目（赤い「＊」）のどれかが未入力です。</p>
+        <p><strong>対処</strong>：画面を上にスクロールして、空欄の項目を探して入力してください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>間違えて送信してしまった</summary>
+      <div class="faq-content">
+        <p><strong>対処</strong>：担当者に報告してください。スプレッドシートで修正できます。</p>
+        <p>再度、正しい情報で送信しても大丈夫です。その場合は備考欄に「〇〇を訂正」と記入してください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Chatworkに通知が来ない</summary>
+      <div class="faq-content">
+        <p><strong>確認1</strong>：送信後に「回答を記録しました」と表示されましたか？</p>
+        <p><strong>確認2</strong>：Chatworkアプリを開いて通知を確認してください。</p>
+        <p><strong>それでも来ない場合</strong>：LINEグループで質問してください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>ホーム画面のアイコンが消えた</summary>
+      <div class="faq-content">
+        <p><strong>対処</strong>：再度、受付フォームのURLを開いて、ホーム画面に追加し直してください。</p>
+        <p>URLがわからない場合は、担当者に聞いてください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>フォームが開かない・エラーが出る</summary>
+      <div class="faq-content">
+        <p><strong>確認1</strong>：スマホの電波は入っていますか？（Wi-Fiまたは4G/5G）</p>
+        <p><strong>確認2</strong>：ブラウザを一度閉じて、もう一度開き直してください。</p>
+        <p><strong>確認3</strong>：スマホを再起動してみてください。</p>
+        <p>それでも解決しない場合は担当者に連絡。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>料金が決まっていない・わからない</summary>
+      <div class="faq-content">
+        <p><strong>対処</strong>：現場の価格表に従って入力してください。</p>
+        <p>価格表がない場合は、担当者に確認してから入力してください。</p>
+        <p>絶対に空欄のまま送信はしないでください。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>電波が悪い時はどうすればいい？</summary>
+      <div class="faq-content">
+        <p><strong>対処</strong>：紙に手書きでメモしておき、電波が入る場所に移動してから入力してください。</p>
+        <p>送信できないまま放置すると、データが消える可能性があります。</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>お客様の情報を間違えて入力した</summary>
+      <div class="faq-content">
+        <p><strong>対処</strong>：送信前であれば、画面を戻って修正可能です。</p>
+        <p>送信後の修正は担当者に依頼してください。個人判断で削除・修正はしないでください。</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===== 7. 連絡先 ===== -->
+  <section id="contact">
+    <div class="section-head">
+      <div class="section-number">SECTION 07</div>
+      <h2 class="section-title">それでも<br>解決しない時</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">遠慮なく担当者へ連絡を</p>
+    </div>
+
+    <div class="cta-box">
+      <h3>💬 困ったらLINEで質問</h3>
+      <p>
+        LINEグループで<br>
+        何でも聞いてください。<br>
+        一人で悩まずに相談！
+      </p>
+      <a href="https://line.me/ti/g/HanDJH6nbH" class="cta-btn">LINEを開く</a>
+    </div>
+
+    <div class="card">
+      <h3>📞 緊急連絡先</h3>
+      <p>
+        <strong>システム担当</strong><br>
+        井上　<a href="tel:09080415379" style="color: var(--grass); font-weight: 700;">090-8041-5379</a><br>
+        鶴田　<a href="tel:09045488705" style="color: var(--grass); font-weight: 700;">090-4548-8705</a>
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="container">
+    <div class="brand">株式会社LEA</div>
+    <p>
+      ゴルフ場洗車受付システム<br>
+      業務効率化ソリューション
+    </p>
+    <div class="version">
+      Ver 1.0 / 2026.04 発行
+    </div>
+  </div>
+</footer>
+
+<!-- ===== トップに戻るボタン ===== -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
+<script>
+// トップに戻るボタン表示制御
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+// フェードインアニメーション
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step, .card, .rule-list, .faq').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
